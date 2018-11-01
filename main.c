@@ -15,9 +15,9 @@ extern void disk_timerproc (void);
 void adc(void);
 
 BYTE Buff[4096] __attribute__ ((aligned (4))) ;			/* Working buffer */
-FATFS FatFs;											/* File system object for each logical drive */
-FIL File;												/* File objects */
-DIR Dir;												/* Directory object */
+FATFS FatFs;							/* File system object for each logical drive */
+FIL File;							/* File objects */
+DIR Dir;							/* Directory object */
 uint16_t b[1024];
 FRESULT fr;
 FATFS fs;
@@ -33,14 +33,14 @@ struct header
     int file_size;
     char subformat[4];
     char subformat_id[4];
-    int chunk_bits;     								//16or18or40 due to pcm it is 16 here
-    short int audio_format;    							//little or big endian
-    short int num_channels;     						//2 here for left and right
-    int sample_rate;									// sample_rate denotes the sampling rate.
-    int byte_rate;           							//bytes  per second
+    int chunk_bits;     					// 16or18or40 due to pcm it is 16 here
+    short int audio_format;    					// little or big endian
+    short int num_channels;     				// 2 here for left and right
+    int sample_rate;						// sample_rate denotes the sampling rate.
+    int byte_rate;           					// bytes  per second
     short int bytes_per_frame;
     short int bits_per_sample;
-    char data_id[4];    								//"data" written in ascii
+    char data_id[4];    					// "data" written in ascii
     int data_size;
 }head;
 
@@ -52,7 +52,7 @@ int main(){
 	GPIOC_ClockEnable();
 	Gpio_Init(GPIOC,15,PushPullOutput_Fast);	
 	const char newline[] = "\t";
-	f_mount(&fs, "", 0);                           	// Open or create a log file and ready to append 
+	f_mount(&fs, "", 0);                           		// Open or create a log file and ready to append 
 	fr = f_open(&fil, "fly.wav",FA_READ);
 	if (fr != FR_OK) return 1;
 	//Samplingtimer();
@@ -195,13 +195,13 @@ void timer(void){
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;																													
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4 , ENABLE);											
 	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
-	TIM_TimeBaseStructure.TIM_Prescaler = SystemCoreClock/990 ; 					// 0..239
-	TIM_TimeBaseStructure.TIM_Period = 40; 											// 0..1023...dutycycle
+	TIM_TimeBaseStructure.TIM_Prescaler = SystemCoreClock/990 ; 			// 0..239
+	TIM_TimeBaseStructure.TIM_Period = 40; 						// 0..1023...dutycycle
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
 																					
 	TIM_Cmd(TIM4, ENABLE);
-	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);										//interrupt config at update
+	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);					//interrupt config at update
 
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
