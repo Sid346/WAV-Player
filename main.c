@@ -47,6 +47,7 @@ struct header
 
 
 int main(){ 	
+<<<<<<< HEAD
 	timer();
 	TIM_SetCompare2(TIM2, 0);
 	GPIOC_ClockEnable();
@@ -77,6 +78,38 @@ int main(){
 	TIM_Cmd(TIM4, DISABLE);
 	TIM_Cmd(TIM2, DISABLE);
 	return 0;
+=======
+    timer();
+    TIM_SetCompare2(TIM2, 0);
+    GPIOC_ClockEnable();
+    Gpio_Init(GPIOC,15,PushPullOutput_Fast);	
+    const char newline[] = "\t";
+    f_mount(&fs, "", 0);                            	// Open or create a log file and ready to append 
+    fr = f_open(&fil, "fly.wav",FA_READ);
+    if (fr != FR_OK) return 1;
+    //Samplingtimer();
+    f_read(&fil,&head,sizeof head,&a);
+    if (fr != FR_OK) return 1; 
+    if(head.data_id[0]!='L')return 1;
+    while(read[0]!='d'){
+    	f_read(&fil,read,sizeof read,&a);
+    }
+    pwmtimer();
+    while(i < head.file_size){
+    	if(i!=j){
+    		f_read(&fil,&data,sizeof data,&a);
+    		TIM_SetCompare2(TIM2,data/66);
+    		j=i;
+    		//Toggle_Gpio(GPIOC,15);
+    		}			 
+    }
+    f_close(&fil);
+    f_mount(0, "", 0);
+    Gpio_BitSet(GPIOC,15);
+    TIM_Cmd(TIM4, DISABLE);
+    TIM_Cmd(TIM2, DISABLE);
+    return 0;
+>>>>>>> 8c138da2aaadad689cc764f1061aa6666062f781
 }
 
 
@@ -101,7 +134,7 @@ void TIM3_IRQHandler(){
 
 
 void Samplingtimer(void){
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	TIM_TimeBaseInitTypeDef Sampling_timer;
 	TIM_TimeBaseStructInit(&Sampling_timer);
 	Sampling_timer.TIM_Period=SystemCoreClock/8000;
