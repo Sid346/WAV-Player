@@ -1,14 +1,18 @@
 # Project Title
 
-Stm32 Based Music Player
+STM32 Based Music Player
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The code provided in this repository can be used to play any .wav audio file using the STM32f103c8t6. The audio file should be locally stored in an SD card 
+and the PWM output is provided through the outputPin defined in the Music_config file. The pin needs to be connected to one of the AUX input of any speaker/earphones 
+along with the ground. The music can be started/stopped by the use of a user button attached on buttonInput pin.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The components required for a proper build of the project are - 
+
+* [STM32F103](https://www.st.com/en/microcontrollers/stm32f103.html?querycriteria=productId=LN1565)
 
 ```
 Give examples
