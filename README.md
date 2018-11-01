@@ -1,6 +1,6 @@
 # Project Title
 
-Music Player
+Stm32 Based Music Player
 
 ## Getting Started
 
