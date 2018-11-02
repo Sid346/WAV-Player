@@ -16,25 +16,27 @@ The components required for a proper build of the project are -
 * SD Card
 * [KEIL](https://www.keil.com/download/product/)(or other ARM) IDE with all the dependencies.
 
-```
-Give examples
-```
 ## Connect
 
-Specific pins used in this example to connect ESP32 and camera are shown in table below. Pinout can be adjusted to some extent in software. Table below provides two options of pin mapping (last two columns).
+Specific pins used in this example to connect STM32 and SD-CARD are shown in table below. Pinout can be adjusted in the software.
 
-| Interface | SD Card Pin | Pin Mapping for STM32f103 
-| :--- | :---: | :---: | :---: |
-| SPI Clock | SCK | B13 
-| SPI Data(from Master) | MOSI | B15
-| SPI Data(from SD- Card) | MISO | B14 
-| SPI Chip Select | CS | C14
-| SD Power | VCC | A15
-| SD Ground | GND | GND
+| Interface | SD Card Pin | Pin Mapping for STM32f103 |
+| :--- | :---: | :---: | 
+| SPI Clock | SCK | B13 |
+| SPI Data(from Master) | MOSI | B15|
+| SPI Data(from SD- Card) | MISO | B14 |
+| SPI Chip Select | CS | C14|
+| SD Power | VCC | A15|
+| SD Ground | GND | GND |
 
-| Interface  | Pin Mapping for STM32f103 
-| Audio Out | A1
-| Music Start/Stop LED | A15
+<br>
+
+The Music output/control pins are :-
+
+| Interface  | Pin Mapping for STM32f103 |
+| :--- | :---: | 
+| Audio Out | A1|
+| Music Start/Stop LED | A15|
 
 
 ### Installing
