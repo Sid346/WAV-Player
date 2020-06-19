@@ -2,6 +2,8 @@
 
 STM32 Based Music Player
 
+![](https://github.com/Sid346/WAV-Player/blob/master/IMG_20180817_220120.jpeg)
+
 ## Getting Started
 
 The code provided in this repository can be used to play any .wav audio file using the STM32f103c8t6. The audio file should be locally stored in an SD card 
